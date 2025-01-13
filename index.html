@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JavaScript Calculator</title>
-</head>
-<body>
-<h1>Kalkulātors</h1>    
-<input type="text" placeholder="1. skaitlis" />
-<input type="text" placeholder="Darbība" >
-<input type="text" placeholder="2. skaitlis" >
-<button>Reiķināt</button>
-</body>
+  </head>
+  <body>
+    <h1>Kalkulātors</h1>
+    <input type="text" placeholder="1. skaitlis" />
+    <input type="text" placeholder="Darbība" />
+    <input type="text" placeholder="2. skaitlis" />
+    <button class="btn">Reiķināt</button>
+
+    <script>
+      const btn = document.getElementById("btn"); // vs querySelector
+
+      btn.addEventListener("click", handleClick);
+
+      function handleClick() {
+        console.log("Calc button clicked");
+      }
+    </script>
+  </body>
 </html>
