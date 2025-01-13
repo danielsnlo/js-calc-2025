@@ -28,19 +28,27 @@
         let secondNumberValue = parseFloat(secondNumberInput.value);
         let operatorValue = operatorInput.value;
 
-        let result = calculateResult(
+        let errorArray = validateUserInput(
           firstNumberValue,
           secondNumberValue,
           operatorValue
         );
 
-        // Display result
-        output.innerText = `Rezultāts: ${result}`;
+        if (errorArray.length > 0) {
+          displayErrors(errorArray);
+        } else {
+          let result = calculateResult(
+            firstNumberValue,
+            secondNumberValue,
+            operatorValue
+          );
+          displayResult(result);
+        }
       }
 
       function calculateResult(n1, n2, op) {
         // Perform calculation
-        switch (operatorValue) {
+        switch (op) {
           case "+":
             return n1 + n2;
           case "-":
@@ -48,8 +56,25 @@
           case "*":
             return n1 * n2;
           case "/":
-              return n1 / n2;
+            return n1 / n2;
         }
+      }
+
+      function validateUserInput(n1, n2, op) {
+        // return [];
+        return [
+          "Pirmais skaitlis nav ievadīts",
+          "Otrais skaitlis nav ievadīts",
+          "Operators nederīgs",
+        ];
+      }
+
+      function displayErrors(errors) {
+        output.innerHTML = errors.join("<br>");
+      }
+
+      function displayResult(result) {
+        output.innerText = `Rezultāts: ${result}`;
       }
     </script>
   </body>
