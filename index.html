@@ -19,10 +19,25 @@
       btn.addEventListener("click", handleClick);
 
       function handleClick() {
-        let firstNumberValue = firstNumberInput.value
-        let secondNumberValue = secondNumberInput.value
-        let operatorNumberInput = operatorNumberInput.value
+        let firstNumberValue = parseFloat (firstNumberInput.value);
+        let secondNumberValue =parseFloat (secondNumberInput.value);
+        let operatorValue = operatorInput.value;
 
+        let result;
+        switch (operatorValue) {
+          case "+":
+            firstNumberInput + secondNumberValue;
+            break;
+          case "-":
+            firstNumberInput - secondNumberValue;
+            break;
+          case "*":
+            firstNumberInput * secondNumberValue;
+            break;
+          case "/":
+            firstNumberInput / secondNumberValue;
+            break;
+        }
       }
     </script>
   </body>
