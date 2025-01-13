@@ -11,7 +11,7 @@
     <input type="text" id="operatorInput" placeholder="Darbība (+, -, *, /)" />
     <input type="text" id="num2" placeholder="2. skaitlis" />
     <button id="btn">Reiķināt</button>
-    <P id="output"></P>
+    <p id="output"></p>
 
     <script>
       const btn = document.getElementById("btn");
@@ -19,7 +19,7 @@
       const secondNumberInput = document.getElementById("num2");
       const operatorInput = document.getElementById("operatorInput");
       const output = document.getElementById("output");
-      
+
       btn.addEventListener("click", handleClick);
 
       function handleClick() {
@@ -28,33 +28,28 @@
         let secondNumberValue = parseFloat(secondNumberInput.value);
         let operatorValue = operatorInput.value;
 
-         // Initialize result variable
-         let result;
-
-        // Perform calculation
-        switch (operatorValue) {
-          case "+":
-            result = firstNumberValue + secondNumberValue;
-            break;
-          case "-":
-            result = firstNumberValue - secondNumberValue;
-            break;
-          case "*":
-            result = firstNumberValue * secondNumberValue;
-            break;
-          case "/":
-            if (secondNumberValue === 0) {
-              result = "Cannot divide by zero";
-            } else {
-              result = firstNumberValue / secondNumberValue;
-            }
-            break;
-          default:
-            result = "Invalid operator. Please use +, -, *, or /.";
-        }
+        let result = calculateResult(
+          firstNumberValue,
+          secondNumberValue,
+          operatorValue
+        );
 
         // Display result
         output.innerText = `Rezultāts: ${result}`;
+      }
+
+      function calculateResult(n1, n2, op) {
+        // Perform calculation
+        switch (operatorValue) {
+          case "+":
+            return n1 + n2;
+          case "-":
+            return n1 - n2;
+          case "*":
+            return n1 * n2;
+          case "/":
+              return n1 / n2;
+        }
       }
     </script>
   </body>
