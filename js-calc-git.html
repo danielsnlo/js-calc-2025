@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator 2025</title>
+</head>
+<body>
+    <h1>Kalkulātors</h1>
+    <input type="text" id="num1" placeholder="1. Skaitlis">
+    <input type="text" id="op" placeholder="Operators (+, -, *, /)">
+    <input type="text" id="num2" placeholder="2. Skaitlis">
+    <button id="btn">Reiķināt</button>
+    <p id="output"></p>
+
+    <script>
+        const btn = document.getElementById("btn");
+        const num1Input = document.getElementById("num1");
+        const num2Input = document.getElementById("num2");
+        const opInput = document.getElementById("op");
+        const output = document.getElementById("output");
+
+        btn.addEventListener("click", handleClick);
+
+        function handleClick() {
+            // Parse inputs
+            let num1Value = parseFloat(num1Input.value);
+            let num2Value = parseFloat(num2Input.value);
+            let opValue = opInput.value.trim();
+
+            // Validate inputs
+            let error = validateUserInput(
+                num1Value,
+                num2Value,
+                opValue
+            );
+
+            if (error.length > 0) {
+                // Display errors
+                displayError(error);
+            } else {
+                // Calculate and display result
+                let result = calculateResult(
+                    num1Value,
+                    num2Value,
+                    opValue
+                );
+                displayResult(result);
+            }
+        }
+
+        function validateUserInput(num1, num2, op) {
+            let errors = [];
+            if (isNaN(num1)) errors.push("1. Skaitlis nav derīgs skaitlis.");
+            if (isNaN(num2)) errors.push("2. Skaitlis nav derīgs skaitlis.");
+            if (!["+", "-", "*", "/"].includes(op)) {
+                errors.push("Operators nav derīgs. Izmantojiet +, -, *, /.");
+            }
+            return errors;
+        }
+
+        function displayError(errors) {
+            output.textContent = errors.join(" ");
+            output.style.color = "red";
+        }
+
+        function calculateResult(num1, num2, op) {
+            switch (op) {
+                case "+":
+                    return num1 + num2;
+                case "-":
+                    return num1 - num2;
+                case "*":
+                    return num1 * num2;
+                case "/":
+                    return num1 / num2;
+                default:
+                    return "Kļūda: Nezināma operācija.";
+            }
+        }
+
+        function displayResult(result) {
+            output.textContent = "Rezultāts: " + result;
+            output.style.color = "green";
+        }
+    </script>
+</body>
+</html>
